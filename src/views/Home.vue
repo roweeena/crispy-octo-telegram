@@ -1,11 +1,12 @@
 <template>
-  <div>
-  <Nav/>
+    <Nav/>
+  <div class="home">
+
     <HelloWorld msg="Welcome"/>
     <p>Click below to get started</p>
     <button @click="redirect">Start</button>
     <button @click="signup">Create an account</button>
-       
+
   </div>
 </template>
 
@@ -20,7 +21,7 @@ export default {
     HelloWorld,
     Nav
   },
-   
+
   methods: {
     redirect(){
         router.push('new-expense')
@@ -33,5 +34,9 @@ export default {
 </script>
 
 <style scoped>
+
+.home{
+  text-align: center;
+}
 
 </style>

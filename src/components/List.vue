@@ -1,35 +1,53 @@
 <template>
   <div>
-  <Input @expense-submitted="addExpense"></Input>
+    <ul>
 
+    <li v-for="(expense, index) in expenses" :key="index">
+      <div class="">
+        <strong> Expense: </strong> {{expense.item}}
+      </div>
+      <div class="">
+        <strong> Amount:</strong>  ${{expense.amount}}
+      </div>
+      <div class="">
+        <strong> Category: </strong> {{expense.category}}
+      </div>
+
+
+    </li>
+    </ul>
+    <button @click="saveToTrip">Save to trip</button>
   </div>
 </template>
 
 <script>
-import Input from '@/components/Input.vue'
+
 export default {
 
   name: 'List',
-  components:{
-   Input
-  },
-
-data(){
-  return{
-    expenses: []
-  }
-
+  props: {
+    expenses: {
+      type: Array,
+      required: true
+    }
   },
   methods: {
-    addExpense(e) {
-      this.expenses.push(e)
-
+    saveToTrip(){
+      console.log('this is supposed to save to the backend')
     }
   }
+
 
 }
 </script>
 
 <style scoped>
+  li{
+    list-style: none;
+    border: 1px solid #ccc;
+    width: 600px;
+    text-align: center;
+    margin: 10px;
+  }
 
 </style>
