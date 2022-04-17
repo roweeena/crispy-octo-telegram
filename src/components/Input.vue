@@ -1,14 +1,27 @@
 <template>
   <div>
+    <h3> Add an expense</h3>
     <form @submit.prevent="onSubmit">
-    Expense: <input type="text" v-model="item">
-    Amount spent: <input type="text" v-model.number="amount">
-    Category: <select v-model="category">
-      <option disabled value="">Please select one</option>
-      <option value="food">Food</option>
-      <option value="accommodation">Accommodation</option>
-      <option value="play">Play</option>
-    </select>
+      <div class="">
+          Expense: <input type="text" v-model="item">
+      </div>
+      <div class="">
+        Amount spent: <input type="text" v-model.number="amount" placeholder="$">
+      </div>
+      <div class="">
+        Category: <select v-model="category">
+          <option disabled value="">Please select one</option>
+          <option value="Food">Food</option>
+          <option value="Accommodation">Accommodation</option>
+          <option value="Leisure">Leisure</option>
+          <option value="Gifts">Gifts</option>
+          <option value="Transport">Transport</option>
+          <option value="Miscellaneous">Miscellaneous</option>
+        </select>
+
+      </div>
+
+
     <button>Add expense to trip</button>
   </form>
 
@@ -51,5 +64,8 @@ export default {
 </script>
 
 <style scoped>
+  div{
+    margin: 15px;
+  }
 
 </style>
