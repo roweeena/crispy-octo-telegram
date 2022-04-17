@@ -24,12 +24,11 @@ button {
   color: white;
   border: 1px solid white;
   border-radius: 10px;
+  padding:0 1em ;
 }
 button:hover{
   cursor:pointer;
-  filter:opacity(0.9)
+  filter:opacity(0.9);
 }
-button:active{
-  transform:translateY(1px)
-}
+button:active{ transform:translateY(1px) }
 </style>
