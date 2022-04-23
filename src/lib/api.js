@@ -15,6 +15,10 @@ const login = ( mail, pass ) => {
         { email: mail, password: pass })
         .then((res) => {
             console.log('res', res.data)
+            const { token, id } = res.data
+            // const currentUser = Vue.observable({ id: id, token: token })
+            localStorage.setItem('currentUserToken', token)
+            localStorage.setItem('currentUserId', id)
         })
         .catch((err, res) => {
             console.log(err, "RESPONSE:", res)

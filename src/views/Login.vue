@@ -25,7 +25,7 @@ export default {
     },
     methods: {
         async loginSubmit(){
-            await login(this.email, this.password )
+            await login( this.email, this.password )
         }
     }
 }
