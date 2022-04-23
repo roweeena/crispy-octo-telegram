@@ -3,6 +3,8 @@
   <div class="home">
 
     <HelloWorld msg="Welcome"/>
+
+    <p v-if=currentUser>Logged in as {{currentUser}}</p>
     <p>Click below to get started</p>
     <button @click="redirect">Start</button>
     <button @click="signup">Create an account</button>
@@ -21,9 +23,14 @@ export default {
     HelloWorld,
     Nav
   },
+  data(){
+    return{
+        currentUser: null
+    }
+  },
 
   methods: {
-    redirect(){
+  redirect(){
         router.push('new-expense')
   },
   signup(){
