@@ -49,19 +49,19 @@ const createTrip = (payload) =>{
    const url = `${API_BASE_URL}/trip/new`;
    const {location, budget, date} = payload
    console.log(location);
-  return axios.post(
-   url, {
-     location:location,
-     budget: budget,
-     date: date
-   }
- )
- .then((res) => {
-   console.log(res.data)
- })
- .catch((err) => {
-   console.warn(err)
- })
+    return axios.post(
+     url, {
+       location:location,
+       budget: budget,
+       date: date
+     }
+   )
+   .then((res) => {
+     console.log(res.data)
+   })
+   .catch((err) => {
+     console.warn(err)
+   })
 }
 
 export{
