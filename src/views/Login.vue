@@ -10,6 +10,8 @@
 </template>
 <script>
 import Nav from '@/components/Nav.vue'
+import { login } from '../lib/api';
+
 export default {
     name: 'Login',
     components: {
@@ -22,8 +24,8 @@ export default {
         }
     },
     methods: {
-        loginSubmit(){
-            console.log('form submitted!', this.email, this.password)
+        async loginSubmit(){
+            await login(this.email, this.password )
         }
     }
 }
