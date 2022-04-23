@@ -10,8 +10,8 @@ const login = ( mail, pass ) => {
     // const url = `${API_BASE_URL}/user/signup`;
     const url = `${API_BASE_URL}/user/login`;
     return axios.post(
-        url, 
-        // {headers: header}, 
+        url,
+        // {headers: header},
         { email: mail, password: pass })
         .then((res) => {
             console.log('res', res.data)
@@ -27,8 +27,8 @@ const signup = ( mail, pass ) => {
     // const url = `${API_BASE_URL}/user/signup`;
     const url = `${API_BASE_URL}/user/signup`;
     return axios.post(
-        url, 
-        // {headers: header}, 
+        url,
+        // {headers: header},
         { email: mail, password: pass })
         .then((res) => {
             console.log('res', res.data)
@@ -37,10 +37,31 @@ const signup = ( mail, pass ) => {
             console.log(err, "RESPONSE:", res)
         })
 
+
 }
 
+const createTrip = (payload) =>{
+  console.log('something', payload)
+   const url = `${API_BASE_URL}/trip/new`;
+   const {location, budget, date} = payload
+   console.log(location);
+  return axios.post(
+   url, {
+     location:location,
+     budget: budget,
+     date: date
+   }
+ )
+ .then((res) => {
+   console.log(res.data)
+ })
+ .catch((err) => {
+   console.warn(err)
+ })
+}
 
 export{
     signup,
-    login
+    login,
+    createTrip
 }
