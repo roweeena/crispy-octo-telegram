@@ -70,8 +70,15 @@ const createTrip = (payload) => {
 
 const verifyLogin = (id) => {
   console.log('verifying login', id)
-  const url = `${API_BASE_URL}/${id}`
+  const url = `${API_BASE_URL}/user/${id}`
   return axios.get(url)
+  .then((res) => {
+    console.log(res.data)
+    return res.data
+  })
+  .catch((err) => {
+    console.warn(err)
+  })
 }
 
 

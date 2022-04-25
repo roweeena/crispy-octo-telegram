@@ -2,7 +2,8 @@
   <div>
       <Nav/>
       <div class="home">
-        <h1>Current Token {{id}}</h1>
+        <h1>Current Id {{id}}</h1>
+        <h1 v-if={currentUser}>Current User {{this.thisUser()}}</h1>
         <p>Click below to get started</p>
         <button @click="redirect">Start</button>
         <button @click="signup">Create an account</button>
@@ -24,7 +25,11 @@ export default {
   data(){
     return{
       // currentUser: false
-      id:undefined
+      id:undefined,
+      currentUser: {},
+      thisUser:function(){
+      console.log(this.currentUser)
+      }
     }
   },
   methods: {
@@ -35,13 +40,13 @@ export default {
       router.push('signup')
     },
     async getUser(){
-      await verifyLogin(this.id)
-    }
+      verifyLogin(this.id)
+    },
   },
   mounted(){
-    this.id = localStorage.getItem('currentUserid')
-    if(this.id){
-      this.getUser()
+    this.id = localStorage.getItem('currentUserId')
+    if(this.id){ // WE DON'T ACTUALLY NEED THIS. THE LOGIN GIVE'S AN ID BUT WE CAN ALSO JUST SENT THROUGH THE USERNAME/EMAIL ON SUCCESSFUL LOGIN. WE ONLY NEED AN API REQUEST WHEN GETTING OR POSTING TRIPS!!!!!!!!!!!!!!!!!!!
+      this.currentUser = this.getUser()
     }
 
   },
