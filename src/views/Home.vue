@@ -1,11 +1,13 @@
 <template>
-    <Nav/>
-    <div class="home">
-      <h1>Current Token {{token}}</h1>
-      <p>Click below to get started</p>
-      <button @click="redirect">Start</button>
-      <button @click="signup">Create an account</button>
-    </div>
+  <div>
+      <Nav/>
+      <div class="home">
+        <h1>Current Token {{id}}</h1>
+        <p>Click below to get started</p>
+        <button @click="redirect">Start</button>
+        <button @click="signup">Create an account</button>
+      </div>
+  </div>
 </template>
 
 <script>
@@ -22,7 +24,7 @@ export default {
   data(){
     return{
       // currentUser: false
-      token:undefined
+      id:undefined
     }
   },
   methods: {
@@ -33,12 +35,12 @@ export default {
       router.push('signup')
     },
     async getUser(){
-      await verifyLogin(this.token)
+      await verifyLogin(this.id)
     }
   },
   mounted(){
-    this.token = localStorage.getItem('currentUserToken')
-    if(this.token){
+    this.id = localStorage.getItem('currentUserid')
+    if(this.id){
       this.getUser()
     }
 

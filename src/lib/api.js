@@ -68,8 +68,10 @@ const createTrip = (payload) => {
    })
 }
 
-const verifyLogin = (token) => {
-  console.log('verifying login', token)
+const verifyLogin = (id) => {
+  console.log('verifying login', id)
+  const url = `${API_BASE_URL}/${id}`
+  return axios.get(url)
 }
 
 
