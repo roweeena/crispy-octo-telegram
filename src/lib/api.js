@@ -1,6 +1,8 @@
 
 import axios from 'axios';
 
+import router from '../router/index.js'
+
 const API_BASE_URL = 'http://localhost:3000';
 
 // const header = {"Access-Control-Allow-Origin": "*"}
@@ -19,6 +21,7 @@ const login = ( mail, pass ) => {
             // const currentUser = Vue.observable({ id: id, token: token })
             localStorage.setItem('currentUserToken', token)
             localStorage.setItem('currentUserId', id)
+            router.push('/')
             
         })
         .catch((err, res) => {
@@ -45,7 +48,7 @@ const signup = ( mail, pass ) => {
 
 }
 
-const createTrip = (payload) =>{
+const createTrip = (payload) => {
   console.log('something', payload)
    const url = `${API_BASE_URL}/trip/new`;
    const {location, budget, date} = payload
@@ -65,8 +68,16 @@ const createTrip = (payload) =>{
    })
 }
 
+const verifyLogin = (token) => {
+  console.log('verifying login', token)
+}
+
+
+
+
 export{
     signup,
     login,
-    createTrip
+    createTrip,
+    verifyLogin
 }

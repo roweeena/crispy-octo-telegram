@@ -11,6 +11,8 @@
 <script>
 import Nav from '@/components/Nav.vue';
 import router from '@/router'
+import { verifyLogin } from '../lib/api';
+
 
 export default {
   name: 'Home',
@@ -19,21 +21,27 @@ export default {
   },
   data(){
     return{
-        // currentUser: false
-        token:undefined
+      // currentUser: false
+      token:undefined
     }
   },
   methods: {
     redirect(){
-          router.push('new-expense')
+      router.push('new-expense')
     },
     signup(){
-          router.push('signup')
+      router.push('signup')
+    },
+    async getUser(){
+      await verifyLogin(this.token)
     }
   },
   mounted(){
-    console.log('yoyoyo')
     this.token = localStorage.getItem('currentUserToken')
+    if(this.token){
+      this.getUser()
+    }
+
   },
 
 }

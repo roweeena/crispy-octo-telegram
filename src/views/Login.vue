@@ -26,7 +26,6 @@ export default {
     methods: {
         async loginSubmit(){
             await login( this.email, this.password )
-            router.push('/')
         }
     }
 }
