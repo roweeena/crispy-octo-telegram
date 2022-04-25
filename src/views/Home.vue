@@ -1,42 +1,41 @@
 <template>
     <Nav/>
-  <div class="home">
-
-    <HelloWorld msg="Welcome"/>
-
-    <p v-if=currentUser>Logged in as {{currentUser}}</p>
-    <p>Click below to get started</p>
-    <button @click="redirect">Start</button>
-    <button @click="signup">Create an account</button>
-
-  </div>
+    <div class="home">
+      <h1>Current Token {{token}}</h1>
+      <p>Click below to get started</p>
+      <button @click="redirect">Start</button>
+      <button @click="signup">Create an account</button>
+    </div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue';
 import Nav from '@/components/Nav.vue';
 import router from '@/router'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
     Nav
   },
   data(){
     return{
-        currentUser: null
+        // currentUser: false
+        token:undefined
     }
   },
-
   methods: {
-  redirect(){
-        router.push('new-expense')
+    redirect(){
+          router.push('new-expense')
+    },
+    signup(){
+          router.push('signup')
+    }
   },
-  signup(){
-        router.push('signup')
-  }
-}
+  mounted(){
+    console.log('yoyoyo')
+    this.token = localStorage.getItem('currentUserToken')
+  },
+
 }
 </script>
 
