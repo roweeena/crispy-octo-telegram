@@ -17,11 +17,14 @@ const login = ( mail, pass ) => {
         { email: mail, password: pass })
         .then((res) => {
             console.log('res', res.data)
-            const { token, id } = res.data
+            const { token, id, name } = res.data
             // const currentUser = Vue.observable({ id: id, token: token })
             localStorage.setItem('currentUserToken', token)
             localStorage.setItem('currentUserId', id)
-            router.push('/')
+            localStorage.setItem('currentUserName', name)
+            localStorage.setItem('currentUser', JSON.stringify(res.data))
+            // router.push('/')
+            router.push('/user/edit')
             
         })
         .catch((err, res) => {
@@ -81,6 +84,19 @@ const verifyLogin = (id) => {
   })
 }
 
+const editUser = (userInfo) => {
+  console.log('editing user', userInfo);
+  const url = `${API_BASE_URL}/user/edit/`
+  axios.post(url, {newName: userInfo, id:localStorage.getItem('currentUserId')})
+  .then((res) => {
+    console.log(res.data)
+    localStorage.setItem('currentUserName', res.data.name)
+  })
+  .catch((err)=>{
+    console.warn(err)
+  })
+}
+
 
 
 
@@ -88,5 +104,6 @@ export{
     signup,
     login,
     createTrip,
-    verifyLogin
+    verifyLogin,
+    editUser
 }

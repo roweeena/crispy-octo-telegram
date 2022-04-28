@@ -5,6 +5,7 @@ import SignUp from "@/views/SignUp.vue";
 import NewTrip from "@/views/NewTrip.vue";
 import Login from "@/views/Login.vue";
 import Dashboard from "@/views/Dashboard.vue";
+import ProfileEdit from "@/views/ProfileEdit.vue";
 
 const routes = [
     {
@@ -31,6 +32,10 @@ const routes = [
         path: '/dashboard',
         name: "Dashboard",
         component: Dashboard,
+    },{
+        path: '/user/edit',
+        name: "ProfileEdit",
+        component: ProfileEdit,
     },
 ];
 

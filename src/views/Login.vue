@@ -27,7 +27,8 @@ export default {
         async loginSubmit(){
             await login( this.email, this.password )
         }
-    }
+    },
+    
 }
 </script>
 <style lang="">
