@@ -90,7 +90,9 @@ const editUser = (userInfo) => {
   axios.post(url, {newName: userInfo, id:localStorage.getItem('currentUserId')})
   .then((res) => {
     console.log(res.data)
-    localStorage.setItem('currentUserName', res.data.name)
+    // localStorage.setItem('currentUserName', res.data.name)
+    localStorage.setItem('currentUser', JSON.stringify(res.data))
+
   })
   .catch((err)=>{
     console.warn(err)
